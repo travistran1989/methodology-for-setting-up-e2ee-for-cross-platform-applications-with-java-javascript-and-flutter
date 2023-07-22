@@ -13,14 +13,14 @@ import 'package:pointycastle/key_generators/api.dart';
 import 'package:pointycastle/key_generators/rsa_key_generator.dart';
 import 'package:pointycastle/random/fortuna_random.dart';
 
-class Rsa {
+class TravisRSA {
   final int keySize;
   DataTypeEnum _dataType = DataTypeEnum.base64;
   ModeEnum _mode = ModeEnum.pkcs1;
   late PublicKey _publicKey;
   late PrivateKey _privateKey;
 
-  Rsa({this.keySize = 2048}) {
+  TravisRSA({this.keySize = 2048}) {
     final keyPair = _generateKeyPair();
     _publicKey = keyPair.publicKey;
     _privateKey = keyPair.privateKey;

@@ -12,7 +12,7 @@ import 'package:pointycastle/padded_block_cipher/padded_block_cipher_impl.dart';
 import 'package:pointycastle/paddings/pkcs7.dart';
 import 'package:pointycastle/pointycastle.dart';
 
-class Aes {
+class TravisAES {
   static const int _keySize = 256;
   static const int _saltLength = _keySize ~/ 8;
   static const int _ivSize = 128;
@@ -20,7 +20,7 @@ class Aes {
   static const int _iterationCount = 1989;
   DataTypeEnum _dataType = DataTypeEnum.base64;
 
-  Aes();
+  TravisAES();
 
   Uint8List _generateRandom(int length) {
     final secureRandom = math.Random.secure();
