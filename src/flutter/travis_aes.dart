@@ -51,14 +51,14 @@ class TravisAES {
     final keyDerivator = _generateKeyDerivator();
     keyDerivator
         .init(Pbkdf2Parameters(_fromHex(salt), _iterationCount, _keySize ~/ 8));
-    return keyDerivator.process(Uint8List.fromList(passphrase.codeUnits));
+    return keyDerivator.process(utf8.encoder.convert(passphrase));
   }
 
   String encryptWithSalt(
       String salt, String iv, String passphrase, String plaintext) {
     final key = _generateKey(passphrase, salt);
     final cipher = _generateCipher(true, key, _fromHex(iv));
-    final encrypted = cipher.process(Uint8List.fromList(plaintext.codeUnits));
+    final encrypted = cipher.process(utf8.encoder.convert(plaintext));
     if (_dataType == DataTypeEnum.hex) {
       return _toHex(encrypted);
     } else {
